@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'dep-selector-libgecode', github: 'chef/dep-selector-libgecode', branch: 'jk/compiled-ruby'
+
 group :guard do
   gem 'coolline',      '~> 0.4.2'
   gem 'guard',         '~> 1.8'

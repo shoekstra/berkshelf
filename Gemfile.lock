@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/chef/dep-selector-libgecode.git
+  revision: 6f424971694df6066ba7f655a5cb76157fe382ad
+  specs:
+    dep-selector-libgecode (1.1.0)
+
+GIT
   remote: https://github.com/berkshelf/berkshelf-api.git
   revision: 1b714dc408105a02ec12761b8c7e85273a3f8d9a
   specs:
@@ -110,7 +116,6 @@ GEM
     cucumber-core (1.4.0)
       gherkin (~> 3.2.0)
     cucumber-wire (0.0.1)
-    dep-selector-libgecode (1.1.0)
     dep_selector (1.0.3)
       dep-selector-libgecode (~> 1.0)
       ffi (~> 1.9)
@@ -365,6 +370,7 @@ DEPENDENCIES
   berkshelf-api!
   chef-zero (~> 4.0)
   coolline (~> 0.4.2)
+  dep-selector-libgecode!
   dep_selector (~> 1.0)
   fuubar (~> 2.0)
   github_changelog_generator (= 1.11.3)
