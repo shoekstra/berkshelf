@@ -100,31 +100,19 @@ module Berkshelf
       # that would be a bad idea...
       dependencies = berksfile.dependencies.map(&:name)
 
-      checked   = {}
-      cookbooks = {}
+      checked = {}
 
       dependencies.each do |dependency|
         next if checked[dependency]
 
         lockfile.graph.find(dependency).dependencies.each do |name, _|
-          cookbooks[name] ||= lockfile.retrieve(name)
           dependencies << name
         end
 
         checked[dependency] = true
-        cookbooks[dependency] ||= lockfile.retrieve(dependency)
       end
 
-      # This is a temporary change and will be removed in a future release. We should
-      # add the ability to define a custom uploader which would allow the authors of Chef-Guard
-      # to define their upload strategy instead of using Ridley.
-      #
-      # See https://github.com/berkshelf/berkshelf/pull/1316 for details.
-      if Berkshelf.chef_config.knife[:chef_guard] == true
-        cookbooks.values
-      else
-        cookbooks.values.sort
-      end
+      dependencies.reverse.map { |dependency| lockfile.retrieve(dependency) }.uniq
     end
   end
 end
